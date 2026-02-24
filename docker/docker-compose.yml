@@ -123,8 +123,9 @@ services:
       GOTRUE_DB_DRIVER: postgres
       GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
 
-      # Necesario para construir redirect_uri al hablar con Google (callback)
-      GOTRUE_SITE_URL: ${SITE_URL:-http://supabase.gnowy.com:8000}
+      # URL del FRONTEND (app), no la de Supabase. Tras login GoTrue redirige aquí.
+      # En producción definir SITE_URL en .env (ej. https://gnowy.com o https://gnowy.vercel.app).
+      GOTRUE_SITE_URL: ${SITE_URL:-http://localhost:3000}
       GOTRUE_URI_ALLOW_LIST: ${ADDITIONAL_REDIRECT_URLS:-http://localhost:3011,http://localhost:3011/workspace}
       GOTRUE_DISABLE_SIGNUP: "false"
 
