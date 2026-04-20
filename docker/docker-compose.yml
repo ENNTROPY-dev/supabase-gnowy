@@ -287,6 +287,9 @@ services:
       #AWS_ACCESS_KEY_ID: your-access-key-id
       #AWS_SECRET_ACCESS_KEY: your-secret-access-key
       FILE_STORAGE_BACKEND_PATH: /var/lib/storage
+      # File backend: sin esto el path queda bucket/clave.pdf/<uuid> y resolveSecurePath falla (path traversal).
+      # Ver https://github.com/supabase/storage/issues/424
+      TUS_USE_FILE_VERSION_SEPARATOR: ${TUS_USE_FILE_VERSION_SEPARATOR:-true}
       TENANT_ID: ${STORAGE_TENANT_ID}
       # TODO: https://github.com/supabase/storage-api/issues/55
       REGION: ${REGION}
